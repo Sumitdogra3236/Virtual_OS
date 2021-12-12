@@ -1,10 +1,10 @@
-package main
+// package main
 
-import("fmt") 
+// import("fmt") 
 
-func main(){
-	fmt.Print("Hello to GO Programming Language")
-}
+// func main(){
+// 	fmt.Print("Hello to GO Programming Language")
+// }
 
 package main
 
