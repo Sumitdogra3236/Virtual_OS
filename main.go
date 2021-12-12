@@ -1,9 +1,30 @@
+// package main
+
+// import("fmt") 
+
+// func main(){
+// 	fmt.Print("Hello to GO Programming Language")
+// }
+
 package main
 
-import("fmt") 
+import (
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
+)
 
-func main(){
-	fmt.Print("Hello to GO Programming Language")
+func main() {
+	a := app.New()
+	w := a.NewWindow("Hello")
+
+	hello := widget.NewLabel("Hello Fyne!")
+	w.SetContent(container.NewVBox(
+		hello,
+		widget.NewButton("Hi!", func() {
+			hello.SetText("Welcome :)")
+		}),
+	))
+
+	w.ShowAndRun()
 }
-
-// go mod init myapp
