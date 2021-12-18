@@ -49,7 +49,8 @@ func main(){
 	label2 := canvas.NewText(fmt.Sprintf("Country %s" , weather.Sys.Country), color.White)
 	label3 := canvas.NewText(fmt.Sprintf("Wind Speed %.2f" , weather.Wind.Speed), color.White)
 	label4 := canvas.NewText(fmt.Sprintf("Temperature %.2f" , weather.Main.Temp), color.White)
-	label5 := canvas.NewText(fmt.Sprintf("Humidity %2f" , weather.Main.Humidity), color.White)
+	label5 := canvas.NewText(fmt.Sprintln("Humidity " , weather.Main.Humidity), color.White)	
+	label6 := canvas.NewText(fmt.Sprintln("Pressure " , weather.Main.Pressure), color.White)
 
 	w.SetContent(
 		container.NewVBox(
@@ -59,6 +60,7 @@ func main(){
 			label3, 
 			label4,
 			label5,
+			label6,
 		),
 	)
 	w.ShowAndRun()
