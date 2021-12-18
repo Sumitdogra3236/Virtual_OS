@@ -1,15 +1,7 @@
-// package main
-
-// import("fmt") 
-
-// func main(){
-// 	fmt.Print("Hello to GO Programming Language")
-// }
-
 package main
 
 import (
-	// "fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
@@ -29,74 +21,74 @@ func main() {
 
 	})
 
-	openBtn := widget.NewButton("Clear", func() {
+	openBtn := widget.NewButton("(", func() {
 
 	})
 
-	closeBtn := widget.NewButton("Clear", func() {
+	closeBtn := widget.NewButton(")", func() {
 
 	})
 
-	divideBtn := widget.NewButton("Clear", func() {
+	divideBtn := widget.NewButton("/", func() {
 
 	})
 
-	sevenBtn := widget.NewButton("Clear", func() {
+	sevenBtn := widget.NewButton("7", func() {
 
 	})
 
-	eightBtn := widget.NewButton("Clear", func() {
+	eightBtn := widget.NewButton("8", func() {
 
 	})
 
-	nineBtn := widget.NewButton("Clear", func() {
+	nineBtn := widget.NewButton("9", func() {
 
 	})
 
-	multiplyBtn := widget.NewButton("Clear", func() {
+	multiplyBtn := widget.NewButton("*", func() {
 
 	})
 
-	fourBtn := widget.NewButton("Clear", func() {
+	fourBtn := widget.NewButton("4", func() {
 
 	})
 
-	fiveBtn := widget.NewButton("Clear", func() {
+	fiveBtn := widget.NewButton("5", func() {
 
 	})
 
-	sixBtn := widget.NewButton("Clear", func() {
+	sixBtn := widget.NewButton("6", func() {
 
 	})
 
-	minusBtn := widget.NewButton("Clear", func() {
+	minusBtn := widget.NewButton("-", func() {
 
 	})
 
-	oneBtn := widget.NewButton("Clear", func() {
+	oneBtn := widget.NewButton("1", func() {
 
 	})
 
-	twoBtn := widget.NewButton("Clear", func() {
+	twoBtn := widget.NewButton("2", func() {
 
 	})
 
-	threeBtn := widget.NewButton("Clear", func() {
+	threeBtn := widget.NewButton("3", func() {
 
 	})
-	plusBtn := widget.NewButton("Clear", func() {
-
-	})
-
-	zeroBtn := widget.NewButton("Clear", func() {
+	plusBtn := widget.NewButton("+", func() {
 
 	})
 
-	dotBtn := widget.NewButton("Clear", func() {
+	zeroBtn := widget.NewButton("0", func() {
 
 	})
 
-	equalBtn := widget.NewButton("Clear", func() {
+	dotBtn := widget.NewButton(".", func() {
+
+	})
+
+	equalBtn := widget.NewButton("=", func() {
 
 	})
 	
@@ -125,7 +117,6 @@ func main() {
 			container.NewGridWithColumns(4,
 			fourBtn,
 			fiveBtn,
-			fiveBtn,
 			sixBtn,
 			minusBtn),
 		),
@@ -138,8 +129,7 @@ func main() {
 		container.NewGridWithColumns(2,
 		zeroBtn,
 		dotBtn),
-		eightBtn,
-	),
+		equalBtn),
 	))
 
 	w.ShowAndRun()
