@@ -1,9 +1,11 @@
 package main
 
 import (
+	"strconv"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/Knetic/govaluate"
 )
 
 func main() {
@@ -16,7 +18,10 @@ func main() {
 
 	})
 	backBtn := widget.NewButton("Back",func() {
-
+		if len(output) > 0{
+		output = output[:len(output)-1];
+		input.SetText(output);
+		}
 	})
 	clearBtn := widget.NewButton("Clear", func() {
 		output = "";
@@ -108,8 +113,17 @@ func main() {
 	})
 
 	equalBtn := widget.NewButton("=", func() {
-		output = output + "=";
-		input.SetText(output);
+		expression, err := govaluate.NewEvaluableExpression(output);
+		if err == nil{
+		result, err := expression.Evaluate(nil);
+		if err == nil{
+			output = strconv.FormatFloat(result.(float64), 'f', -1, 64);
+		}
+		}
+
+		input.SetText(output)
+
+	// result is now set to "true", the bool value.
 	})
 	
 
