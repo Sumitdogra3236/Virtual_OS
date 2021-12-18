@@ -9,9 +9,8 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
-	// "fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/container"
-	// "fyne.io/fyne/v2/widget"
+	
 )
 
 func main() {
@@ -24,27 +23,27 @@ func main() {
 	if err != nil {
         log.Fatal(err)
     }
-	var picsArr[] string; 
+tabs := container.NewAppTabs(
+		
+		// container.NewTabItem("Image1", ),
+		// container.NewTabItem("Tab 2", canvas.NewImageFromFile(picsArr[0])),
+	)
+
 	for _, file := range files {
         fmt.Println(file.Name(), file.IsDir())
 		if file.IsDir() == false {
 			extension := strings.Split(file.Name(), ".")[1];
 			if extension == "png" || extension == "jpeg"{
-			picsArr = append(picsArr,root_src+"\\"+file.Name())
+			image:= canvas.NewImageFromFile(root_src+"\\"+file.Name());
+			image.FillMode = canvas.ImageFillOriginal
+			tabs.Append(container.NewTabItem(file.Name(), image))
 			}
 		}
     }
 
-	tabs := container.NewAppTabs(
-		
-		// container.NewTabItem("Image1", ),
-		container.NewTabItem("Tab 2", canvas.NewImageFromFile(picsArr[0])),
-	)
-	for i:= 1; i < len(picsArr);i++ {
-			tabs.Append(container.NewTabItem("Image", canvas.NewImageFromFile(picsArr[i])))
-		}
 
-	image.FillMode = canvas.ImageFillOriginal
+		
+
 	tabs.SetTabLocation(container.TabLocationLeading)
 	w.SetContent(tabs);
 	w.ShowAndRun()
