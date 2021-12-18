@@ -35,9 +35,8 @@ func main() {
 		}
     }
 
-	image := canvas.NewImageFromFile(picsArr[0])
 	tabs := container.NewAppTabs(
-		container.NewTabItem("Image1",)
+		container.NewTabItem("Image1", canvas.NewImageFromFile(picsArr[0]))
 		container.NewTabItem("Tab 2", widget.NewLabel("World!")),
 	)
 	w.SetContent(container.NewHBox(image,tabs))
