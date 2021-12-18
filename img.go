@@ -11,7 +11,7 @@ import (
 	"fyne.io/fyne/v2/canvas"
 	// "fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
+	// "fyne.io/fyne/v2/widget"
 )
 
 func main() {
@@ -36,10 +36,17 @@ func main() {
     }
 
 	tabs := container.NewAppTabs(
-		container.NewTabItem("Image1", canvas.NewImageFromFile(picsArr[0]))
-		container.NewTabItem("Tab 2", widget.NewLabel("World!")),
+		
+		// container.NewTabItem("Image1", ),
+		container.NewTabItem("Tab 2", canvas.NewImageFromFile(picsArr[0])),
 	)
-	w.SetContent(container.NewHBox(image,tabs))
+	for i:= 1; i < len(picsArr);i++ {
+			tabs.Append(container.NewTabItem("Image", canvas.NewImageFromFile(picsArr[i])))
+		}
+
+	image.FillMode = canvas.ImageFillOriginal
+	tabs.SetTabLocation(container.TabLocationLeading)
+	w.SetContent(tabs);
 	w.ShowAndRun()
 }
 
