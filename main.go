@@ -118,7 +118,11 @@ func main() {
 		result, err := expression.Evaluate(nil);
 		if err == nil{
 			output = strconv.FormatFloat(result.(float64), 'f', -1, 64);
+		} else {
+			output = "error";
 		}
+		} else {
+			output = "error";
 		}
 
 		input.SetText(output)
