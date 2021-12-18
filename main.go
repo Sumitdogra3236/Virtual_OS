@@ -2,6 +2,8 @@ package main
 
 import (
 	"strconv"
+
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
@@ -11,17 +13,23 @@ import (
 func main() {
 	a := app.New()
 	w := a.NewWindow("Calculator")
+	// w.Resize(fyne.NewSize(500,280))
 	output := ""
 	input := widget.NewLabel("output")
+	isHistory := false;
 	historyStr := "";
 	history := widget.NewLabel(historyStr);
 	var historyArr []string;
 	historyBtn := widget.NewButton("History", func(){
+		if isHistory{
+			historyStr = "";
+		} else {
 		for i:=len(historyArr)-1; i >= 0; i-- {
 			historyStr = historyStr + historyArr[i];
 			historyStr+="\n";
 		}
-
+	}
+		isHistory = !isHistory;
 		history.SetText(historyStr);
 	})
 	backBtn := widget.NewButton("Back",func() {
