@@ -1,12 +1,15 @@
 package main
 
 import (
+	"io/ioutil"
 	"strconv"
+	// "strings"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/storage"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -48,13 +51,39 @@ func main() {
 	})
 
 
-	
+	openBtn := widget.NewButton("Open text File", func(){
+		openFileDialog := dialog.NewFileOpen(
+			func(r fyne.URIReadCloser, _ error) {
+				ReadData ,_ := ioutil.ReadAll(r)
+
+
+				output := fyne.NewStaticResource("New File", ReadData)
+
+				viewData := widget.NewMultiLineEntry()
+
+				viewData.SetText(string(output.StaticContent))
+
+				w:= fyne.CurrentApp().NewWindow(
+					string(output.StaticName))
+
+					w.SetContent(container.NewScroll(viewData))
+
+					w.Resize(fyne.NewSize(400, 400))
+
+					w.Show()
+			}, w)
+
+			openFileDialog.SetFilter(storage.NewExtensionFileFilter([]string{".txt"}))
+
+			openFileDialog.Show()
+	})
 	w.SetContent(
 		container.NewVBox(
 			content,
 			input,
 			container.NewHBox(
 			saveBtn,
+			openBtn,
 			),
 		),
 		
